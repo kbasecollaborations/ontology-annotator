@@ -1,7 +1,7 @@
-SERVICE = ontology-annotator
-SERVICE_CAPS = ontology-annotator
-SPEC_FILE = ontology-annotator.spec
-URL = https://kbase.us/services/ontology-annotator
+SERVICE = ontology_annotator
+SERVICE_CAPS = ontology_annotator
+SPEC_FILE = ontology_annotator.spec
+URL = https://kbase.us/services/ontology_annotator
 DIR = $(shell pwd)
 LIB_DIR = lib
 SCRIPTS_DIR = scripts

@@ -36,7 +36,7 @@
     "behavior": {
         "service-mapping": {
             "url": "",
-            "name": "ontology-annotator",
+            "name": "ontology_annotator",
             "method": "run_ontology-annotator",
             "input_mapping": [
                 {

@@ -4,9 +4,9 @@ import time
 import unittest
 from configparser import ConfigParser
 
-from ontology-annotator.ontology-annotatorImpl import ontology-annotator
-from ontology-annotator.ontology-annotatorServer import MethodContext
-from ontology-annotator.authclient import KBaseAuth as _KBaseAuth
+from ontology_annotator.ontology_annotatorImpl import ontology_annotator
+from ontology_annotator.ontology_annotatorServer import MethodContext
+from ontology_annotator.authclient import KBaseAuth as _KBaseAuth
 
 from installed_clients.WorkspaceClient import Workspace
 
@@ -20,7 +20,7 @@ class ontology-annotatorTest(unittest.TestCase):
         cls.cfg = {}
         config = ConfigParser()
         config.read(config_file)
-        for nameval in config.items('ontology-annotator'):
+        for nameval in config.items('ontology_annotator'):
             cls.cfg[nameval[0]] = nameval[1]
         # Getting username from Auth profile for token
         authServiceUrl = cls.cfg['auth-service-url']
@@ -32,14 +32,14 @@ class ontology-annotatorTest(unittest.TestCase):
         cls.ctx.update({'token': token,
                         'user_id': user_id,
                         'provenance': [
-                            {'service': 'ontology-annotator',
+                            {'service': 'ontology_annotator',
                              'method': 'please_never_use_it_in_production',
                              'method_params': []
                              }],
                         'authenticated': 1})
         cls.wsURL = cls.cfg['workspace-url']
         cls.wsClient = Workspace(cls.wsURL)
-        cls.serviceImpl = ontology-annotator(cls.cfg)
+        cls.serviceImpl = ontology_annotator(cls.cfg)
         cls.scratch = cls.cfg['scratch']
         cls.callback_url = os.environ['SDK_CALLBACK_URL']
         suffix = int(time.time() * 1000)

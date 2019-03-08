@@ -2,7 +2,7 @@
 A KBase module: ontology-annotator
 */
 
-module ontology-annotator {
+module ontology_annotator {
     typedef structure {
 		string workspace_id;
 		string workspace_name;

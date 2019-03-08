@@ -17,7 +17,7 @@ from jsonrpcbase import JSONRPCService, InvalidParamsError, KeywordError, \
 from jsonrpcbase import ServerError as JSONServerError
 
 from biokbase import log
-from ontology-annotator.authclient import KBaseAuth as _KBaseAuth
+from ontology_annotator.authclient import KBaseAuth as _KBaseAuth
 
 try:
     from ConfigParser import ConfigParser
@@ -45,14 +45,14 @@ def get_config():
     retconfig = {}
     config = ConfigParser()
     config.read(get_config_file())
-    for nameval in config.items(get_service_name() or 'ontology-annotator'):
+    for nameval in config.items(get_service_name() or 'ontology_annotator'):
         retconfig[nameval[0]] = nameval[1]
     return retconfig
 
 config = get_config()
 
-from ontology-annotator.ontology-annotatorImpl import ontology-annotator  # noqa @IgnorePep8
-impl_ontology-annotator = ontology-annotator(config)
+from ontology_annotator.ontology_annotatorImpl import ontology_annotator  # noqa @IgnorePep8
+impl_ontology_annotator = ontology_annotator(config)
 
 
 class JSONObjectEncoder(json.JSONEncoder):
@@ -327,7 +327,7 @@ class Application(object):
                                    context['method'], context['call_id'])
 
     def __init__(self):
-        submod = get_service_name() or 'ontology-annotator'
+        submod = get_service_name() or 'ontology_annotator'
         self.userlog = log.log(
             submod, ip_address=True, authuser=True, module=True, method=True,
             call_id=True, changecallback=self.logcallback,
@@ -338,12 +338,12 @@ class Application(object):
         self.serverlog.set_log_level(6)
         self.rpc_service = JSONRPCServiceCustom()
         self.method_authentication = dict()
-        self.rpc_service.add(impl_ontology-annotator.run_ontology-annotator,
-                             name='ontology-annotator.run_ontology-annotator',
+        self.rpc_service.add(impl_ontology_annotator.run_ontology-annotator,
+                             name='ontology_annotator.run_ontology-annotator',
                              types=[dict])
-        self.method_authentication['ontology-annotator.run_ontology-annotator'] = 'required'  # noqa
-        self.rpc_service.add(impl_ontology-annotator.status,
-                             name='ontology-annotator.status',
+        self.method_authentication['ontology_annotator.run_ontology-annotator'] = 'required'  # noqa
+        self.rpc_service.add(impl_ontology_annotator.status,
+                             name='ontology_annotator.status',
                              types=[dict])
         authurl = config.get(AUTH) if config else None
         self.auth_client = _KBaseAuth(authurl)
@@ -398,7 +398,7 @@ class Application(object):
                             err = JSONServerError()
                             err.data = (
                                 'Authentication required for ' +
-                                'ontology-annotator ' +
+                                'ontology_annotator ' +
                                 'but no authentication header was passed')
                             raise err
                         elif token is None and auth_req == 'optional':
