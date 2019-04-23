@@ -42,7 +42,7 @@ class ontology_annotator:
         pass
 
 
-    def run_ontology-annotator(self, ctx, params):
+    def run_ontology_annotator(self, ctx, params):
         """
         This example function accepts any number of parameters and returns results in a KBaseReport
         :param params: instance of type "ontologyInput" -> structure:

@@ -51,26 +51,6 @@ hot3 = new Handsontable(container3, {
     },
     strict: false
   },
-{
-      type: 'autocomplete',
-      source: function (query, process) {
-        $.ajax({
-          url: 'b.json',
-          dataType: 'json',
-          data: {
-            query: query
-          },
-          success: function (response) {
-            console.log("response", response);
-            //process(JSON.parse(response.data)); // JSON.parse takes string as a argument
-            process(response.data);
-
-          }
-        });
-      },
-      strict: true
-    },
-
   {
     type: 'autocomplete',
     source: function (query, process) {
